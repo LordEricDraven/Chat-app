@@ -2,7 +2,6 @@ package com.coderscampus.assignment14.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,23 +24,28 @@ public class UserController {
 		this.userService = userService;
 	}
 	
-	@PostMapping("/register")
-	public String createUser(@RequestParam String username, Model model) {
-		User user = userService.createUser(username);
-		model.addAttribute("user", user);
-		return "redirect:/channels";
-	}
-	
-	@GetMapping("/{username}")
+	@PostMapping("/create")
 	@ResponseBody
-	public User getUserByUsername(@PathVariable String username) {
-		return userService.getUserByUsername(username);
+	public User createUser(@RequestParam String username) {
+		return userService.createUser(username); 
 	}
+//	
+//	@GetMapping("/{username}")
+//	@ResponseBody
+//	public User getUserByUsername(@PathVariable String username) {
+//		return userService.getUserByUsername(username);
+//	}
+//	
+//	@GetMapping("/exists/{userId}")
+//	@ResponseBody
+//	public boolean userExists(@PathVariable Long userId) {
+//		return userService.userExists(userId);
+//	}
 	
-	@GetMapping("/exists/{userId}")
-	@ResponseBody
-	public boolean userExists(@PathVariable Long userId) {
-		return userService.userExists(userId);
+	//user doesn't need a dedicated page for this assignment.
+	@GetMapping
+	public String showUserPage() {
+		return "user";
 	}
 	
 }

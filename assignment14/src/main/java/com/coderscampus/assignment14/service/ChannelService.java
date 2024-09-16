@@ -2,9 +2,12 @@ package com.coderscampus.assignment14.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.coderscampus.assignment14.domain.Channel;
 import com.coderscampus.assignment14.repository.ChannelRepository;
 
+@Service
 public class ChannelService {
 
 	private ChannelRepository channelRepo;

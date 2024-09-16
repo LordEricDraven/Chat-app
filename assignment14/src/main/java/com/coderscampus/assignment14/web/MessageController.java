@@ -30,12 +30,15 @@ public class MessageController {
 	}
 	
 	@PostMapping("/send")
-	public String sendMessage(@PathVariable Long channelId,
+	@ResponseBody
+	public Message sendMessage(@PathVariable Long channelId,
 							  @RequestParam Long userId,
-							  @RequestParam String content) {
+							  @RequestParam String messageContent) {
 		User user = userService.getUserById(userId);
-		messageService.sendMessage(channelId,  user, content);
-		return "redirect:/channels/" + channelId;
+		if(user != null) {
+			return messageService.addMessageToChannel(channelId, user.getUsername(), messageContent);
+		}
+		return null;
 	}
 	
 	@GetMapping

@@ -9,7 +9,7 @@ public class Channel {
 	private Long channelId;
 	private List<Message> messages;
 
-	public Channel(String name, Long ChannelId) {
+	public Channel(String name, Long channelId) {
 		this.name = name;
 		this.channelId = channelId;
 	}

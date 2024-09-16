@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Available Channels</title>
+		<link rel="stylesheet" type="text/css" href="/css/channels.css">
+		<script src="/js/channels.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<h1 id="welcomeMessage">Welcome, </h1>
+			<p>Select a channel to join:</p>
+			
+			<ul>
+				<li th:each="channel: ${channels}">
+					<a th:href="@{'/channels/' + ${channel.channelId}}"
+						th:text="${channel.channelName}">Channel Name</a>
+				</li>
+			</ul>
+			
+			<div class="new-channel-form">
+				<h2>Create a New Channel</h2>
+				<form action="/channels/create" method="post" th:action="@{/channels/create}">
+					<label for="channelName">Channel Name:</label>
+					<input type="text" id="channelName" name="name" placeholder="Enter new channel name" required>
+					<button type="submit">Create Channel</button>
+				</form>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Chat App - Welcome</title>
+		<link rel="stylesheet" type="text/css" href="/css/welcome.css">
+		<script src="/js/welcome.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<h1>Welcome to the Chat App!</h1>
+			<p>Please enter your name to continue:</p>
+			
+			<form onsubmit="createUser(event)">
+				<label for="username">Your Name:</label>
+				<input type="text" id="username" name="username" placeholder="Enter your name" required>
+				
+				<button type="submit">Join</button>
+			</form>
+		</div>
+	</body>
+</html>

@@ -13,17 +13,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.coderscampus.assignment14.domain.Channel;
+import com.coderscampus.assignment14.domain.Message;
 import com.coderscampus.assignment14.service.ChannelService;
+import com.coderscampus.assignment14.service.MessageService;
 
 @Controller
 @RequestMapping("/channels")
 public class ChannelController {
 
 	private final ChannelService channelService;
+	private final MessageService messageService;
 	
 	@Autowired
-	public ChannelController(ChannelService channelService) {
+	public ChannelController(ChannelService channelService, MessageService messageService) {
 		this.channelService = channelService;
+		this.messageService = messageService;
 	}
 	
 	@PostMapping("/create")
@@ -34,15 +38,33 @@ public class ChannelController {
 	}
 	
 	@GetMapping("/{ChannelId}")
+	public String showChannelPage(@PathVariable Long ChannelId) {
+		return "channel";
+	}
+
+	@GetMapping("/{channelId}/details")
 	@ResponseBody
-	public Channel getChannelById(@PathVariable Long channelId) {
+	public Channel getChannelDetails(@PathVariable Long channelId) {
 		return channelService.getChannelById(channelId);
 	}
 	
-	@GetMapping
+//	@GetMapping("/{channelId}/messages")
+//	@ResponseBody
+//	public List<Message> getMessagesByChannel(@PathVariable Long channelId){
+//		return messageService.getMessagesByChannel(channelId);
+//	}
+	
+	@PostMapping("/{channelId}/messages")
 	@ResponseBody
-	public List<Channel> getAllChannels(){
-		return channelService.getAllChannels();
+	public Message postMessageToChannel(@PathVariable Long channelId, @RequestParam String username, @RequestParam String messageContent) {
+		return messageService.addMessageToChannel(channelId, username, messageContent);
+	}
+	
+	@GetMapping
+	public String getAllChannels(Model model){
+		List<Channel> channels = channelService.getAllChannels();
+		model.addAttribute("channels", channels);
+		return "channels";
 	}
 	
 }
