@@ -65,10 +65,12 @@ document.getElementById('messageInput').addEventListener('keydown', (event) => {
 
 setInterval(pollMessages, 500);
 
-document.addEventListener('DOMContentLoaded', () =>{
-	fetch(`/channels/${channelId}/details`)
-	.then(response => response.json())
-	.then(channel => {
-		document.getElementById('channelName').textContent = `Channel: ${channel.name}`;
-	});
-});
+// Original way I was displaying channel name in the chat room. Switched to thymeleaf
+//
+//document.addEventListener('DOMContentLoaded', () =>{
+//	fetch(`/channels/${channelId}/details`)
+//	.then(response => response.json())
+//	.then(channel => {
+//		document.getElementById('channelName').textContent = `Channel: ${channel.channelName}`;
+//	});
+//});

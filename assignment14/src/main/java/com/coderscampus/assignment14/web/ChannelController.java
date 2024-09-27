@@ -37,8 +37,10 @@ public class ChannelController {
 		return "redirect:/channels";
 	}
 	
-	@GetMapping("/{ChannelId}")
-	public String showChannelPage(@PathVariable Long ChannelId) {
+	@GetMapping("/{channelId}")
+	public String showChannelPage(@PathVariable Long channelId, Model model) {
+		Channel channel = channelService.getChannelById(channelId);
+		model.addAttribute("channel", channel);
 		return "channel";
 	}
 

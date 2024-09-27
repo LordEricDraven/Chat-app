@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<title>Channel Chat</title>
 		<link rel="stylesheet" href="/css/channel.css">
@@ -7,7 +7,7 @@
 	</head>
 	<body>
 		<div class="container">
-			<h1 id="channelName">Channel: </h1>
+			<h1 id="channelName">Channel: <span th:text="${channel.channelName}"></span></h1>
 			
 			<div id="chatWindow">
 			</div>
