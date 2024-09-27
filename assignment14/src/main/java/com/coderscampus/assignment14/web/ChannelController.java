@@ -49,13 +49,7 @@ public class ChannelController {
 	public Channel getChannelDetails(@PathVariable Long channelId) {
 		return channelService.getChannelById(channelId);
 	}
-	
-//	@GetMapping("/{channelId}/messages")
-//	@ResponseBody
-//	public List<Message> getMessagesByChannel(@PathVariable Long channelId){
-//		return messageService.getMessagesByChannel(channelId);
-//	}
-	
+
 	@PostMapping("/{channelId}/messages")
 	@ResponseBody
 	public Message postMessageToChannel(@PathVariable Long channelId, @RequestParam String username, @RequestParam String messageContent) {

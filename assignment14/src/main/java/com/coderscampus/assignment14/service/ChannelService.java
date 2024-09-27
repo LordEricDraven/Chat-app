@@ -10,7 +10,7 @@ import com.coderscampus.assignment14.repository.ChannelRepository;
 @Service
 public class ChannelService {
 
-	private ChannelRepository channelRepo;
+	private final ChannelRepository channelRepo;
 	
 	public ChannelService(ChannelRepository channelRepo) {
 		this.channelRepo = channelRepo;

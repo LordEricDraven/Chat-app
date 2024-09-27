@@ -24,14 +24,6 @@ public class UserService {
 	public User getUserById(Long userId) {
 		return userRepo.getUserById(userId);
 	}
-	
-	public User getUserByUsername(String username) {
-		return userRepo.getUserbyUsername(username);
-	}
-	
-	public boolean userExists(Long userId) {
-		return userRepo.userExists(userId);
-	}
 
 	private Long generateUniqueId() {
 		// TODO Auto-generated method stub

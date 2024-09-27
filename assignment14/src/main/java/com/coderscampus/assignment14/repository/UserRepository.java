@@ -19,20 +19,5 @@ public class UserRepository {
 	public User getUserById(Long userId) {
 		return users.get(userId);
 	}
-	
-	public User getUserbyUsername(String username) {
-		return users.values()
-					.stream()
-					.filter(user -> username.equals(user.getUsername()))
-					.findFirst()
-					.orElse(null);
-	}
-	
-	public boolean userExists(Long userId) {
-		return users.containsKey(userId);
-	}
-	
-	public void removeUser(Long userId) {
-		users.remove(userId);
-	}
+
 }

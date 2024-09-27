@@ -41,7 +41,6 @@ function pollMessages(){
 			messageElement.classList.add('message-item');
 			
 			const timestamp = new Date(message.timestamp).toLocaleTimeString([],{hour: '2-digit', minute:'2-digit'});
-//			messageElement.textContent = `${message.username}: ${message.messageContent} ${timestamp}`;
 			messageElement.innerHTML = `
 				<span class="username">${message.username}:</span>
 				<span class="message-content">${message.messageContent}</span>
@@ -64,13 +63,3 @@ document.getElementById('messageInput').addEventListener('keydown', (event) => {
 })
 
 setInterval(pollMessages, 500);
-
-// Original way I was displaying channel name in the chat room. Switched to thymeleaf
-//
-//document.addEventListener('DOMContentLoaded', () =>{
-//	fetch(`/channels/${channelId}/details`)
-//	.then(response => response.json())
-//	.then(channel => {
-//		document.getElementById('channelName').textContent = `Channel: ${channel.channelName}`;
-//	});
-//});

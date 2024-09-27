@@ -29,23 +29,5 @@ public class UserController {
 	public User createUser(@RequestParam String username) {
 		return userService.createUser(username); 
 	}
-//	
-//	@GetMapping("/{username}")
-//	@ResponseBody
-//	public User getUserByUsername(@PathVariable String username) {
-//		return userService.getUserByUsername(username);
-//	}
-//	
-//	@GetMapping("/exists/{userId}")
-//	@ResponseBody
-//	public boolean userExists(@PathVariable Long userId) {
-//		return userService.userExists(userId);
-//	}
-	
-	//user doesn't need a dedicated page for this assignment.
-	@GetMapping
-	public String showUserPage() {
-		return "user";
-	}
-	
+
 }
